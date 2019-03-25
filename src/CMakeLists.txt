@@ -115,9 +115,14 @@ install(TARGETS edges_pose_refiner fdcm
 
 
 add_executable(sample ../sample/sample.cpp)
+add_executable(sample_glassloc ../sample_glassloc/sample_glassloc.cpp)
 # not sure why but we need Python on Lucid
 find_package(PythonLibs)
 target_link_libraries(sample edges_pose_refiner
+                             ${PYTHON_LIBRARIES}
+                             ${PCL_LIBRARIES}
+)
+target_link_libraries(sample_glassloc edges_pose_refiner
                              ${PYTHON_LIBRARIES}
                              ${PCL_LIBRARIES}
 )
